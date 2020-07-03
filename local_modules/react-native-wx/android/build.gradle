@@ -1,0 +1,25 @@
+apply plugin: 'com.android.library'
+
+android {
+  compileSdkVersion 28
+  buildToolsVersion "28.0.3"
+  defaultConfig {
+    minSdkVersion 16
+    targetSdkVersion 22
+    versionCode 1
+    versionName "1.0"
+    ndk {
+      abiFilters "armeabi-v7a", "x86"
+    }
+     manifestPlaceholders = [
+                WX_APPID: "wx06a52d311ee3cbf8"
+    //            wx06a52d311ee3cbf8
+     ]
+  }
+}
+
+dependencies {
+  compile 'com.facebook.react:react-native:+'
+  compile files('libs/libammsdk.jar')
+}
+

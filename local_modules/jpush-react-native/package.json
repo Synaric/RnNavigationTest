@@ -1,0 +1,116 @@
+{
+  "_from": "jpush-react-native@2.5.3",
+  "_id": "jpush-react-native@2.5.3",
+  "_inBundle": false,
+  "_integrity": "sha1-Ic0lul5A5UPetCQKl6EZ6f/Xuj4=",
+  "_location": "/jpush-react-native",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "jpush-react-native@2.5.3",
+    "name": "jpush-react-native",
+    "escapedName": "jpush-react-native",
+    "rawSpec": "2.5.3",
+    "saveSpec": null,
+    "fetchSpec": "2.5.3"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npm.taobao.org/jpush-react-native/download/jpush-react-native-2.5.3.tgz",
+  "_shasum": "21cd25ba5e40e543deb4240a97a119e9ffd7ba3e",
+  "_spec": "jpush-react-native@2.5.3",
+  "_where": "E:\\Android Workspace\\omma",
+  "author": {
+    "name": "KenChoi, huminiOS"
+  },
+  "bugs": {
+    "url": "https://github.com/jpush/jpush-react-native/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "inquirer": "*",
+    "mpatch": "^0.1.0"
+  },
+  "deprecated": false,
+  "description": "a jpush plugin for react native application",
+  "devDependencies": {
+    "babel-eslint": "^7.2.3",
+    "husky": "^0.14.3",
+    "lint-staged": "^6.0.1",
+    "prettier": "^1.10.2",
+    "standard": "^10.0.3"
+  },
+  "homepage": "https://github.com/jpush/jpush-react-native#readme",
+  "keywords": [
+    "react",
+    "native",
+    "jpush"
+  ],
+  "license": "ISC",
+  "lint-staged": {
+    "*.{ts,md}": [
+      "prettier --write",
+      "git add"
+    ],
+    "*.js": [
+      "prettier --write",
+      "standard --fix",
+      "git add"
+    ]
+  },
+  "main": "index.js",
+  "name": "jpush-react-native",
+  "peerDependencies": {
+    "jcore-react-native": ">= 1.3.1"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/jpush/jpush-react-native.git"
+  },
+  "rnpm": {
+    "android": {
+      "packageInstance": "new JPushPackage(!BuildConfig.DEBUG, !BuildConfig.DEBUG)"
+    },
+    "ios": {
+      "sharedLibraries": [
+        "libz",
+        "UserNotifications",
+        "CoreTelephony",
+        "Security",
+        "CFNetwork",
+        "CoreFoundation",
+        "SystemConfiguration",
+        "Foundation",
+        "UIKit",
+        "libresolv",
+        "CoreGraphics"
+      ]
+    },
+    "commands": {
+      "prelink": "node node_modules/jpush-react-native/scripts/patch"
+    }
+  },
+  "scripts": {
+    "lint": "prettier --write '**/*.{js,ts,md}'; standard --fix",
+    "precommit": "lint-staged"
+  },
+  "standard": {
+    "env": {
+      "jest": true
+    },
+    "parser": "babel-eslint",
+    "ignore": [
+      "android/",
+      "ios/"
+    ]
+  },
+  "types": "index.d.ts",
+  "version": "2.5.3"
+}

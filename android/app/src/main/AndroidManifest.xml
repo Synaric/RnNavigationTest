@@ -1,35 +1,83 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.edutopapp">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.zhmobi.omma">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <!--<uses-permission android:name="android.permission.INTERNET" />-->
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+
+    <!--android:appComponentFactory="xfFactory"-->
+    <!--tools:replace="android:allowBackup"-->
+    <!--tools:replace="android:appComponentFactory"-->
+
+    <!--解决屏幕高度获取错误-->
+    <meta-data
+        android:name="android.max_aspect"
+        android:value="2.1" />
 
     <application
-            android:name=".MainApplication"
-            android:label="@string/app_name"
-            android:icon="@mipmap/ic_launcher"
-            android:roundIcon="@mipmap/ic_launcher_round"
-            android:allowBackup="false"
-            android:theme="@style/AppTheme"
-            android:networkSecurityConfig="@xml/network_security_config">
+        android:name=".MainApplication"
+        android:allowBackup="false"
+        android:appComponentFactory="android.support.v4.app.CoreComponentFactory"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme"
+        tools:replace="android:allowBackup">
 
         <uses-library android:name="org.apache.http.legacy" android:required="false"/>
 
-        <!--解决屏幕高度获取错误-->
-        <meta-data android:name="android.max_aspect" android:value="2.1"/>
-
         <activity
-                android:name=".MainActivity"
-                android:label="@string/app_name"
-                android:screenOrientation="portrait"
-                android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode"
-                android:launchMode="singleTask"
-                android:windowSoftInputMode="adjustResize">
+            android:name=".MainActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+            android:label="@string/app_name"
+            android:windowSoftInputMode="adjustResize">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.facebook.react.devsupport.DevSettingsActivity"/>
+
+        <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
+
+
+        <!--支付宝-->
+        <activity
+            android:name="com.alipay.sdk.app.H5PayActivity"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:exported="false"
+            android:screenOrientation="behind"
+            android:windowSoftInputMode="adjustResize|stateHidden"></activity>
+        <activity
+            android:name="com.alipay.sdk.app.H5AuthActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind"
+            android:windowSoftInputMode="adjustResize|stateHidden"></activity>
+
+        <!--微信-->
+        <activity
+            android:name="com.zhmobi.omma.wxapi.WXEntryActivity"
+            android:exported="true" />
+        <activity
+            android:name="com.zhmobi.omma.wxapi.WXPayEntryActivity"
+            android:exported="true"
+            android:launchMode="singleTop" />
+
+
+        <!--极光推送-->
+        <meta-data
+            android:name="JPUSH_CHANNEL"
+            android:value="${APP_CHANNEL}" />
+        <meta-data
+            android:name="JPUSH_APPKEY"
+            android:value="${JPUSH_APPKEY}" />
     </application>
 
 </manifest>

@@ -1,32 +1,34 @@
-import {HOST, VERSION_NUMBER} from '../util/config'
+import {HOST, REQUEST_SOURCE, VERSION_NUMBER} from '../utils/config'
 import {AsyncStorage, Platform} from 'react-native'
-import {log} from '../util/artUtils'
+import {NavigationActions} from 'react-navigation'
+import {log} from '../utils/arts'
 
 export function get (page, route, params, success, fail) {
   if (params) {
     params.platform = Platform.OS
+    params.requestFrom = REQUEST_SOURCE
     params.versionNumber = VERSION_NUMBER
   }
   const url = HOST + route + (params && Object.keys(params).length ? ('?' + serialize(params)) : '')
-
+  console.log('request API ------------ GET', url )
   AsyncStorage.getItem('token', (error, result) => {
     fetch(url, {
       cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
       method: 'GET', // *GET, POST, PUT, DELETE, etc.
       headers: {
         'content-type': 'application/json',
-        'authorization': result || ''
+          'authorization': result || ''
       },
     })
       .then(response => (response.json())) // parses response to JSON
       .then(response => {
         log(`response of [${route}]`, response)
-        if (response.code === 12 || response.code === -2) {
-          AsyncStorage.removeItem('token', () => {
-            // 回到登录界面
-          });
-          return
-        }
+        // if (response.code === 12 || response.code === -2) {
+        //   AsyncStorage.removeItem('token', () => {
+        //     page.props.navigation.reset([NavigationActions.navigate({routeName: 'Login'})], 0)
+        //   });
+        //   return
+        // }
         if (success) success(response)
       }) // parses response to JSON
       .catch(e => {
@@ -40,9 +42,14 @@ export function get (page, route, params, success, fail) {
 export function post (page, route, data, success, fail) {
   if (data) {
     data.platform = Platform.OS
+    data.requestFrom = REQUEST_SOURCE
     data.versionNumber = VERSION_NUMBER
   }
+  console.log('request API ------------ POST', HOST + route )
+    console.log('request API ------------ DATA', JSON.stringify(data) )
+    console.log('request API ------------ token', AsyncStorage.getItem('token') )
   AsyncStorage.getItem('token', (error, result) => {
+      console.log('request API ------------ token', AsyncStorage.getItem('token'), result )
     fetch(HOST + route, {
       body: JSON.stringify(data), // must match 'Content-Type' header
       cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -55,12 +62,12 @@ export function post (page, route, data, success, fail) {
       .then(response => (response.json())) // parses response to JSON
       .then(response => {
         log(`response of [${route}]`, response)
-        if (response.code === 12 || response.code === -2) {
-          AsyncStorage.removeItem('token', () => {
-            // 回到登录界面
-          });
-          return
-        }
+        // if (response.code === 12 || response.code === -2) {
+        //   AsyncStorage.removeItem('token', () => {
+        //     page.props.navigation.reset([NavigationActions.navigate({routeName: 'Login'})], 0)
+        //   });
+        //   return
+        // }
         if (success) success(response)
       })
       .catch(e => {

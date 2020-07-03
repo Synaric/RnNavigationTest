@@ -1,0 +1,65 @@
+{
+  "_args": [
+    [
+      "react-native-wx@3.0.3",
+      "/Users/money/Desktop/EduTopRN"
+    ]
+  ],
+  "_from": "react-native-wx@3.0.3",
+  "_id": "react-native-wx@3.0.3",
+  "_inBundle": false,
+  "_integrity": "sha1-76RNgcfq3DRAk4BrUL3pC2GDTTk=",
+  "_location": "/react-native-wx",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "react-native-wx@3.0.3",
+    "name": "react-native-wx",
+    "escapedName": "react-native-wx",
+    "rawSpec": "3.0.3",
+    "saveSpec": null,
+    "fetchSpec": "3.0.3"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npm.taobao.org/react-native-wx/download/react-native-wx-3.0.3.tgz",
+  "_spec": "3.0.3",
+  "_where": "/Users/money/Desktop/EduTopRN",
+  "author": {
+    "name": "lvbingru"
+  },
+  "bugs": {
+    "url": "https://github.com/reactnativecn/react-native-wx/issues"
+  },
+  "dependencies": {
+    "es6-promisify": "^3.0.0"
+  },
+  "description": "微信登录、分享、支付模块",
+  "homepage": "https://github.com/reactnativecn/react-native-wx#readme",
+  "keywords": [
+    "react-native",
+    "ios",
+    "android",
+    "wechat",
+    "weixin",
+    "login",
+    "share",
+    "pay"
+  ],
+  "license": "ISC",
+  "main": "index.js",
+  "name": "react-native-wx",
+  "peerDependencies": {
+    "react-native": "^0.33.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reactnativecn/react-native-wx.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "3.0.3"
+}
