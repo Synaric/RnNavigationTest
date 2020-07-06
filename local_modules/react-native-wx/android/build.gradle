@@ -1,0 +1,28 @@
+apply plugin: 'com.android.library'
+
+android {
+  compileSdkVersion 28
+  buildToolsVersion "28.0.3"
+  defaultConfig {
+    minSdkVersion 19
+    targetSdkVersion 28
+    versionCode 1
+    versionName "1.0"
+    ndk {
+      abiFilters "armeabi-v7a", "x86"
+    }
+    manifestPlaceholders = [
+            JPUSH_APPKEY: "9df2bfb58d5c7adc0570b091",
+            APP_CHANNEL : "default",
+            WX_APPID    : "wx06a52d311ee3cbf8",
+            QQ_APPID    : "101593003"
+    ]
+  }
+}
+
+dependencies {
+  api 'com.facebook.react:react-native:+'
+  api 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
+  implementation 'androidx.annotation:annotation:1.0.0'
+}
+
