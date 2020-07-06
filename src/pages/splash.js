@@ -51,7 +51,7 @@ export default class Splash extends BasePage {
           }
         })
       }}>
-        <Text>to NewsDetail</Text>
+        <Text>to B</Text>
       </Btn>
     );
   }
